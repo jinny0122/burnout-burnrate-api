@@ -14,4 +14,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 10000
 
 # 6. 最终启动命令（Render 会自动分发 $PORT 端口）
-CMD ["sh", "-c", "uvicorn main.py:app --host 0.0.0.0 --port ${PORT:-10000}"]
+# 删掉 main.py 后面的 .py，精准对齐 uvicorn 的标准语法
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-10000}"]
